@@ -10,6 +10,8 @@ import {
 import { Visibility, VisibilityOff} from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
+import axios from 'axios'
+import { BASE_URL, API_KEY } from '../../Api/Api';
 
 function Copyright(props) {
   return (
@@ -29,8 +31,8 @@ const defaultTheme = createTheme();
 export default function Login() {
 
     const navigate = useNavigate()
-    // const { dispatch } = useContext(AuthContext);
-    // const [errors, setErrors] = useState('')
+    const { dispatch } = useContext(AuthContext);
+    const [errors, setErrors] = useState('')
     const [showPassword, setShowPassword] = useState(false);
 
     const [ credentials, setCredentials ] = useState({
@@ -47,32 +49,33 @@ export default function Login() {
     }
 
     const handleLogin = async (e) =>{
-        // e.preventDefault();
-        navigate('/dashboard')
+        e.preventDefault();
         console.log(credentials)
-        //    dispatch({type:"LOGIN_START"})
-        //    try{
-        //        const res = await axios.post(`${BASE_URL}/api-auth/`, credentials,
-        //        {
-        //          headers:{
-        //            'Authorization' : 'Token ' + API_KEY
-        //          }
-        //        })
-        //        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.data });
-        //        const rest = res.data.data
-        //        console.log(rest)
-        //        localStorage.setItem("user_token",rest.token)
-        //        localStorage.setItem("user_id",rest.user_id)
-        //        localStorage.setItem("name",rest.name)
-        //        localStorage.setItem("roles",rest.roles)
-        //        navigate("/authentication-user")
-        //        window.location.reload()
-        //    }catch(err){
-        //    dispatch({ type: "LOGIN_FAILURE", payload: err.response.data.detail })
-        //    console.log(err.response)
-        //    setErrors(err.response.data.error)
-        //    }
+           dispatch({type:"LOGIN_START"})
+           try{
+               const res = await axios.post(`${BASE_URL}/api-auth/`, credentials,
+               {
+                 headers:{
+                   'Authorization' : 'Token ' + API_KEY
+                 }
+               })
+               dispatch({ type: "LOGIN_SUCCESS", payload: res.data.data });
+               const rest = res.data.data
+               console.log(rest)
+               localStorage.setItem("user_token",rest.token)
+               localStorage.setItem("user_id",rest.user_id)
+               localStorage.setItem("name",rest.name)
+               localStorage.setItem("roles",rest.roles)
+              //  navigate("/authentication-user")
+               navigate('/home')
+               window.location.reload()
+           }catch(err){
+           dispatch({ type: "LOGIN_FAILURE", payload: err.response.data.detail })
+           console.log(err.response)
+           setErrors(err.response.data.error)
+           }
      }
+     console.log(errors)
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -137,6 +140,9 @@ export default function Login() {
                 }
                 />
             </FormControl>
+                <Typography variant="body2" sx={{marginTop:'20px'}} color="text.danger" align="left">
+                     {errors}
+                </Typography>
                 <button onClick={handleLogin} className="button_login">Login</button>
               <Copyright sx={{ mt: 5 }} />
             </Box>

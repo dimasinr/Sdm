@@ -22,6 +22,7 @@ code {
   height: 40px;
   margin-top: 20px;
 }
+
 .button_login:hover{
   border: none;
   font-weight: 500;
@@ -30,4 +31,75 @@ code {
   border-radius: 15px;
   width: 100%;
   height: 40px;
+}
+
+.side_col{
+  background-color: #4932a7c1;
+  border-radius: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.side_no_col{
+  color: black;
+}
+
+.side_no_col:hover{
+  background-color: #624bc0a5;
+  border-radius: 20px;
+  color: white;
+}
+
+.ic_col{
+  color: white;
+}
+
+.ic_no_col{
+  color: #0B305A;
+}
+
+.ic_no_col:hover{
+  color: white;
+}
+
+text.highcharts-credits{
+  display: none;
+  visibility: hidden;
+}
+
+.shadow-card{
+  border: none;
+  border-radius: 15px;
+  box-shadow: -1px 5px 6px -1px rgba(190, 190, 190, 0.38);
+  -webkit-box-shadow: -1px 5px 6px -1px rgba(172, 172, 172, 0.38);
+  -moz-box-shadow: -1px 5px 6px -1px rgba(182, 182, 182, 0.38);
+}
+.shadow-card:hover{
+  box-shadow: -1px 5px 6px -1px rgba(83, 83, 83, 0.38);
+  -webkit-box-shadow: -1px 5px 6px -1px rgba(62, 62, 62, 0.38);
+  -moz-box-shadow: -1px 5px 6px -1px rgba(74, 74, 74, 0.38);
+}
+
+::-webkit-scrollbar {
+  width: 17px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+.color_bar{
+  background: #0B305A;
+  height: 2px;
 }

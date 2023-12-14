@@ -31,6 +31,7 @@ function SideBar({ window, children }) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          background: "white", boxShadow: 'none', color: 'red'
         }}
       >
         <Toolbar>
@@ -44,7 +45,7 @@ function SideBar({ window, children }) {
             <Menu />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            Nawastra
           </Typography>
         </Toolbar>
       </AppBar>
@@ -69,20 +70,20 @@ function SideBar({ window, children }) {
           {drawer}
         </Drawer>
         <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-          open
+            variant="permanent"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Box>
+        <Box
+          component="main"
+          sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
         >
-          {drawer}
-        </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-      >
         <Toolbar />
         {children}
       </Box>

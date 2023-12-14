@@ -18,7 +18,7 @@ console.log(user)
 return(
     <Routes>
         <Route path='/' element={<Login/>} />
-        <Route path='/dashboard' element={<DashboardEmployee/>} />
+        <Route path='/home' element={<DashboardEmployee/>} />
     </Routes>
     )
 }
